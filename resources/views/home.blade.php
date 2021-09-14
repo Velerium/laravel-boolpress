@@ -16,18 +16,14 @@
 
                     {{ __('You are logged in!') }}
                 </div>
-            </div>
-            
-            <div>
-                @foreach ($postList as $post)
-                <div>
-                    <span>{{ $post->title }} / </span>
-                    <span>{{ $post->author }} / </span>
-                    <span>{{ $post->comments }}</span>
-                </div>
-                @endforeach
+
             </div>
 
+            <div class="card">
+                <div class="links card-body">
+                    <a href="/posts">Guarda i post</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
