@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('title', 100);
             $table->string('author', 50);
+            $table->text('body');
             $table->string('categories', 50);
             $table->string('tags', 50);
             $table->unsignedSmallInteger('comments');

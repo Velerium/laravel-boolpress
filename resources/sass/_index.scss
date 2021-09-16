@@ -1,0 +1,26 @@
+h1 {
+    padding-bottom: 40px;
+}
+
+.newPost {
+    outline: none;
+    border: 1px solid $blue;
+    background-color: #fff;
+    padding: 5px 10px;
+    margin-bottom: 30px;
+    font-size: 20px;
+    transition: transform 0.2s ease-in-out;
+    margin-right: 15px;
+    color: $blue;
+
+    a {
+
+        &:hover {
+            text-decoration: none; 
+        }
+    }
+
+    &:hover {
+        transform: scale(110%);
+    }
+}

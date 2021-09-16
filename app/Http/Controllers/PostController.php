@@ -25,7 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.createPost');
     }
 
     /**
@@ -35,8 +35,26 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+
+        $request->validate([
+            'title' => 'required|max:100',
+            'body' => 'required'
+        ]);
+        
+        $data = $request->all();
+
+        $newPost = new Post();
+        $newPost->title = $data['title'];
+        $newPost->body = $data['body'];
+        $newPost->tags = $data['tags'];
+        $newPost->categories = $data['categories'];
+        $newPost->author = $data['author'];
+        $newPost->comments = $data['comments'];
+        $newPost->date = $data['date'];
+        $newPost->save();
+
+        return redirect()->route('posts.show', $newPost->id);
     }
 
     /**

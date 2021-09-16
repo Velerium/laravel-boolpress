@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card mb-3">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
@@ -19,7 +19,7 @@
 
             </div>
 
-            <div class="card">
+            <div class="card col-md-3 text-center mx-auto">
                 <div class="links card-body">
                     <a href="/posts">Guarda i post</a>
                 </div>

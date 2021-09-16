@@ -4,6 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
+
+        <button class="newPost"><a href="{{ route('posts.create')}}">Create post</a></button>
+
         <table class="table">
             <thead>
                 <tr class="text-center">

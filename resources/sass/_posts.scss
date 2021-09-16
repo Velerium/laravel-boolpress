@@ -1,3 +1,41 @@
 .inner-card {
     display: flex;
 }
+
+.post {
+    border: 1px solid #bbb;
+    border-radius: 30px;
+    padding: 15px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+
+    div {
+        &:first-child {
+            display: flex;
+            justify-content: space-between;
+            
+        }
+
+        margin-bottom: 15px;
+    }
+}
+
+.comment {
+    margin-bottom: 20px;
+}
+
+.create {
+    div {
+        display: flex;
+        margin-bottom: 10px;
+
+        &:last-of-type {
+            margin-bottom: 30px;
+        }
+
+        label {
+            width: 80px;
+        }
+    }
+}
