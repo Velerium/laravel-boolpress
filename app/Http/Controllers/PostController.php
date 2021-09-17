@@ -14,7 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $postList = Post::all();
+        $postList = Post::all()
+                    ->sortByDesc('date');
         return view('posts.index', compact('postList'));
     }
 
@@ -38,7 +39,7 @@ class PostController extends Controller
     {   
 
         $request->validate([
-            'title' => 'required|max:100',
+            'title' => 'required|max:50',
             'body' => 'required'
         ]);
         
@@ -75,9 +76,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+
+        return view('posts.editPost', compact('post'));
+
     }
 
     /**
@@ -87,9 +90,22 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+
+        $request->validate([
+            'title' => 'required|max:50',
+            'body' => 'required'
+        ]);
+
+        $data = $request->all();
+        unset($data['_token']);
+        unset($data['_method']);
+
+        $post->update($data);
+
+        return redirect()->route('posts.show', $post); 
+
     }
 
     /**
@@ -98,8 +114,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect()->route('posts.index');
     }
 }

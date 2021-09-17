@@ -11,7 +11,7 @@
 
             <div class="post">
                 <div>
-                    <h2>{{ $post->author }}</h2>
+                    <h3>{{ $post->author }}</h3>
                     <h3>{{ $post->date }}</h3>
                 </div>
                 <h1>{{ $post->title }}</h1>

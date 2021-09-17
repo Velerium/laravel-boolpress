@@ -23,4 +23,27 @@ h1 {
     &:hover {
         transform: scale(110%);
     }
+
+
+}
+
+.actions {
+    display: flex;
+    justify-content: space-around;
+
+    form {
+        button{
+            border: none;
+            outline: none;
+            background-color: #fff;
+            padding: 0;
+            
+        }
+    }
+
+    i {
+        color: $blue;
+        font-size: 16px;
+        margin-right: 3px;
+    }
 }

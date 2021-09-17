@@ -1418,15 +1418,22 @@ url(/fonts/vendor/bootstrap-icons/bootstrap-icons.woff?7fb23f3b56a834d9dcf615b5e
 
 .create div {
   display: flex;
-  margin-bottom: 10px;
+  flex-direction: column;
+  margin-bottom: 20px;
+  width: 100%;
 }
 
 .create div:last-of-type {
   margin-bottom: 30px;
 }
 
+.create div input {
+  width: 100%;
+}
+
 .create div label {
   width: 80px;
+  font-weight: 700;
 }
 
 h1 {
@@ -1451,6 +1458,24 @@ h1 {
 
 .newPost:hover {
   transform: scale(110%);
+}
+
+.actions {
+  display: flex;
+  justify-content: space-around;
+}
+
+.actions form button {
+  border: none;
+  outline: none;
+  background-color: #fff;
+  padding: 0;
+}
+
+.actions i {
+  color: #3490dc;
+  font-size: 16px;
+  margin-right: 3px;
 }
 
 /*!

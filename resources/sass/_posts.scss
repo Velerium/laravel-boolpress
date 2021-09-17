@@ -28,14 +28,21 @@
 .create {
     div {
         display: flex;
-        margin-bottom: 10px;
+        flex-direction: column;
+        margin-bottom: 20px;
+        width: 100%;
 
         &:last-of-type {
             margin-bottom: 30px;
         }
 
+        input {
+            width: 100%;
+        }
+
         label {
             width: 80px;
+            font-weight: 700;
         }
     }
 }

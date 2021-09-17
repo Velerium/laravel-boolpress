@@ -30,7 +30,15 @@
                         <td>{{$post->tags}}</td>
                         <td class="text-center">{{$post->comments}}</td>
                         <td>{{$post->date}}</td>
-                        <td><a href="{{ route('posts.show', $post) }}">Go</a></td>
+                        <td class="actions">
+                            <a href="{{ route('posts.show', $post) }}"><i class="bi bi-zoom-in"></i></a>
+                            <a href="{{ route('posts.edit', $post) }}"><i class="bi bi-pencil-fill"></i></a>
+                            <form action="{{ route('posts.destroy', $post) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"><i class="bi bi-trash"></i></button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
