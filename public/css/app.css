@@ -1403,13 +1403,20 @@ url(/fonts/vendor/bootstrap-icons/bootstrap-icons.woff?7fb23f3b56a834d9dcf615b5e
   flex-direction: column;
 }
 
-.post div {
-  margin-bottom: 15px;
+.post .post-details {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
 }
 
-.post div:first-child {
+.post .post-details div {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+}
+
+.post .post-details div h3,
+.post .post-details div h4 {
+  margin: 0 0 0 10px;
 }
 
 .comment {
@@ -1434,6 +1441,10 @@ url(/fonts/vendor/bootstrap-icons/bootstrap-icons.woff?7fb23f3b56a834d9dcf615b5e
 .create div label {
   width: 80px;
   font-weight: 700;
+}
+
+.create .custom-select {
+  width: 100% !important;
 }
 
 h1 {
@@ -1465,11 +1476,15 @@ h1 {
   justify-content: space-around;
 }
 
-.actions form button {
+.actions button {
   border: none;
   outline: none;
   background-color: #fff;
   padding: 0;
+}
+
+.actions button i {
+  color: red;
 }
 
 .actions i {

@@ -31,9 +31,20 @@
                     <textarea name="body" id="body" cols="40" rows="7">{{ $post->body }}</textarea>
                 </div>
                 
-                <div>
-                    <label for="categories">Categorie</label>
-                    <input type="text" name="categories" id="categories" value="{{ $post->categories }}">
+                <div class="form-group">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="category_id">Choose</label>
+                        </div>
+                        <select class="custom-select" id="category_id" name="category_id">
+                            <option selected>{{ $post->category->name }}</option>
+                            @foreach($categories as $category)
+                                @if ($category->name !== $post->category->name)
+                                    <option value="{{$category->id}}">{{ $category->name }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
 
                 <div>
@@ -42,6 +53,10 @@
                 </div>
 
                 <input type="hidden" name="date" id="date" value="{{ $post->updated_at }}">
+
+                <input type="hidden" name="author" id="author" value="{{ $post->author }}">
+
+                <input type="hidden" name="comments" id="comments" value="{{ $post->comments }}">
 
                 <button class="newPost" type="submit">Salva modifiche</button>
                         

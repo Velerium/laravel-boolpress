@@ -10,11 +10,12 @@
                 <button class="newPost"><a href="{{ route('posts.create')}}">Create post</a></button>
 
             <div class="post">
-                <div>
-                    <h3>{{ $post->author }}</h3>
-                    <h3>{{ $post->date }}</h3>
+                <div class="post-details">
+                    <div>Author: <h3>{{ $post->author }}</h3></div> 
+                    <div>Category:<h4> {{ $post->category->name }}</h4></div> 
+                    <div><h4>{{ $post->date }}</h4></div>
                 </div>
-                <h1>{{ $post->title }}</h1>
+                <h1 class="text-center">{{ $post->title }}</h1>
                 <p><?=nl2br($post->body)?></p> <!-- nl2br, my new best friend. -->
             </div>
 
@@ -25,8 +26,9 @@
             <br>
 
             @for ($i = 0; $i < $post->comments; $i++)
+
                 <div class="comment">
-                    COMMENTO
+                    COMMENT {{$i+1}}
                 </div>
             @endfor
 

@@ -33,17 +33,41 @@
                         <td class="actions">
                             <a href="{{ route('posts.show', $post) }}"><i class="bi bi-zoom-in"></i></a>
                             <a href="{{ route('posts.edit', $post) }}"><i class="bi bi-pencil-fill"></i></a>
-                            <form action="{{ route('posts.destroy', $post) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit"><i class="bi bi-trash"></i></button>
-                            </form>
+                            <button type="button" data-toggle="modal" data-target="#modal-{{ $post->id }}"><i class="bi bi-trash"></i></button>
                         </td>
                     </tr>
+
+                    <div class="modal fade" id="modal-{{ $post->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Deleting post...</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                Are you sure you want to delete this post?
+                                </div>
+                                <div class="modal-footer">
+                                    <form action="{{ route('posts.destroy', $post) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-primary">Yes, delete it</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No, don't</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 @endforeach
-            </tbody>
+                </tbody>
             </table>
         </div>
     </div>
 </div>
 @endsection
+
+
+

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use App\Category;
 
 class PostController extends Controller
 {
@@ -26,7 +27,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.createPost');
+        $categories = Category::all();
+        return view('posts.createPost', compact('categories'));
     }
 
     /**
@@ -43,19 +45,10 @@ class PostController extends Controller
             'body' => 'required'
         ]);
         
-        $data = $request->all();
+        $post = New Post();
 
-        $newPost = new Post();
-        $newPost->title = $data['title'];
-        $newPost->body = $data['body'];
-        $newPost->tags = $data['tags'];
-        $newPost->categories = $data['categories'];
-        $newPost->author = $data['author'];
-        $newPost->comments = $data['comments'];
-        $newPost->date = $data['date'];
-        $newPost->save();
-
-        return redirect()->route('posts.show', $newPost->id);
+        $this->saveItemFromRequest($post, $request);
+        return redirect()->route('posts.show', $post);
     }
 
     /**
@@ -64,9 +57,8 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        $post = Post::find($id);
         return view('posts.show', compact('post'));
     }
 
@@ -77,10 +69,9 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Post $post)
-    {
-
-        return view('posts.editPost', compact('post'));
-
+    {   
+        $categories = Category::all();
+        return view('posts.editPost', compact('post', 'categories'));
     }
 
     /**
@@ -98,12 +89,7 @@ class PostController extends Controller
             'body' => 'required'
         ]);
 
-        $data = $request->all();
-        unset($data['_token']);
-        unset($data['_method']);
-
-        $post->update($data);
-
+        $this->saveItemFromRequest($post, $request);
         return redirect()->route('posts.show', $post); 
 
     }
@@ -119,5 +105,19 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()->route('posts.index');
+    }
+
+    private function saveItemFromRequest(Post $post, Request $request) {
+
+        $data = $request->all();
+
+        $post->title = $data['title'];
+        $post->author = $data['author'];
+        $post->body = $data['body'];
+        $post->tags = $data['tags'];
+        $post->date = $data['date'];
+        $post->comments = $data['comments'];
+        $post->category_id = $data['category_id'];
+        $post->save();
     }
 }
